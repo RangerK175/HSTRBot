@@ -1,0 +1,12 @@
+{
+  "name": "hstr-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for HSTR Project",
+  "main": "bot.js",
+  "author": "TheNo0b",
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^11.3.2",
+    "winston": "^3.0.0"
+  }
+}
