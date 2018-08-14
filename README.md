@@ -1,6 +1,6 @@
 # HSTRBot
 
-For support, contact me via TheNo0b#9329 on Discord. Below are the commands. Bot is currently serving over 9,000 users.  <br />  <br /> 
+For support, contact me via TheNo0b#9329 on Discord. Bot is currently serving over 9,000 users. Invite the bot to your Discord server via the following link: https://discordapp.com/oauth2/authorize?client_id=476374210122612747&scope=bot  <br /> Below are the bot commands: <br /> <br /> 
 
        !teamslist: Display the full reccomended HSTR teams list  <br /> 
        !jtr: display the P1 JTR battlecard. <br /> 
