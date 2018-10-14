@@ -97,7 +97,7 @@ client.on("message", async message => {
       **!p3 [number]**: Convert damage score to percent of boss health in P3 \n \
       **!p4 [number]**: Convert damage score to percent of boss health in P4 \n \
       **!invite**: Invite the bot to your Discord server \n \
-      **!readiness** (coming soon!): Breaks down how ready your guild is for each HSTR phase, and analyzes which guild members need to strengthen which squads for phases that you are not ready for.  \n \
+      **!readiness** (coming very soon!): Breaks down how ready your guild is for each HSTR phase, and analyzes which guild members need to strengthen which squads for phases that you are not ready for.  \n \
       ');
   }
   if(command=="teamslist") {
@@ -158,7 +158,7 @@ client.on("message", async message => {
     message.channel.send("Use the following link (need server admin permissions): https://discordapp.com/oauth2/authorize?client_id=476374210122612747&scope=bot . For support, contact TheNo0b#9329 on Discord")
   }
   if(command=="readiness") {
-    message.channel.send("coming soon, stay tuned!")
+    message.channel.send("coming very soon, stay tuned!")
   }
   else {
     message.channel.send("invalid command");
