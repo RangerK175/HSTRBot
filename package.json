@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Discord bot for HSTR Project",
   "main": "bot.js",
-  "author": "TheNo0b",
+  "author": "Tipster22",
   "dependencies": {
     "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
     "discord.js": "^11.3.2",
