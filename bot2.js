@@ -81,12 +81,12 @@ client.on("message", async message => {
       **!yolorolo**: display the P3 YOLO ROLO battlecard 
       **!nihilusmatrix**: display matrix to understand how Nihilus attacks 
       **!nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
-      **!p1 [number]**: Convert damage score to percent of boss health in P1 
-      **!p2 [number]**: Convert damage score to percent of boss health in P2 
-      **!p3 [number]**: Convert damage score to percent of boss health in P3 
-      **!p4 [number]**: Convert damage score to percent of boss health in P4 
+      **!p1 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P1 
+      **!p2 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P2 
+      **!p3 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P3 
+      **!p4 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P4 
       **!invite**: Invite the bot to your Discord server 
-      **!readiness** (coming very soon!): Breaks down how ready your guild is for each HSTR phase, and analyzes which guild members need to        strengthen which squads for phases that you are not ready for.  
+      **!readiness** (coming very soon!): Breaks down how ready your guild is for each HSTR phase, and analyzes which guild members need to strengthen which           squads for phases that you are not ready for.  
       `);
             break;
         }
@@ -153,31 +153,77 @@ client.on("message", async message => {
         }
 
         case 'p1': {
-            let num = Number(args[0].replace(/\,/g, '')) / 46888776 * 100;
-            message.channel.send(Math.round(num * 10) / 10 + "%");
+            // Check if this is a percentage or a raw number
+            if (args[0].charAt(args[0].length - 1) === '%') {
+
+                // convert to a decimal with 4 decimal places
+                const percent = (parseFloat(args[0]) / 100).toFixed(4);
+                message.channel.send(`${args[0]} is ${(46888776 * percent).toFixed(0)}`);
+
+            } else if (typeof Number(args[0]) === 'number') {
+
+                let num = Number(args[0].replace(/\,/g, ''))/ 46888776 * 100;
+                message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
+
+            } else {
+                // If the user didn't send a percentage or number, need to catch the mistake.
+                message.channel.send(`${args[0]} can't be converted.`)
+            }
             break;
         }
 
         case 'p2': {
-            let num = Number(args[0].replace(/\,/g, '')) / 52105585 * 100;
-            message.channel.send(Math.round(num * 10) / 10 + "%");
+            if (args[0].charAt(args[0].length - 1) === '%') {
+
+                const percent = (parseFloat(args[0]) / 100).toFixed(4);
+                message.channel.send(`${args[0]} is ${(52105585 * percent).toFixed(0)}`);
+
+            } else if (typeof Number(args[0]) === 'number') {
+                let num = Number(args[0].replace(/\,/g, '')) / 52105585 * 100;
+                message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
+            } else {
+                // If the user didn't send a percentage or number, need to catch the mistake.
+                message.channel.send(`${args[0]} can't be converted.`)
+            }
+
             break;
         }
 
         case 'p3': {
-            let num = Number(args[0].replace(/\,/g, '')) / 38371455 * 100;
-            message.channel.send(Math.round(num * 10) / 10 + "%");
+            if (args[0].charAt(args[0].length - 1) === '%') {
+                const percent = (parseFloat(args[0]) / 100).toFixed(4);
+                message.channel.send(`${args[0]} is ${(38371455 * percent).toFixed(0)}`);
+
+            } else if (typeof Number(args[0]) === 'number') {
+                let num = Number(args[0].replace(/\,/g, '')) / 38371455 * 100;
+                message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
+            } else {
+                // If the user didn't send a percentage or number, need to catch the mistake.
+                message.channel.send(`${args[0]} can't be converted.`)
+            }
+
             break;
         }
 
         case 'p4': {
-            let num = Number(args[0].replace(/\,/g, '')) / 33499537 * 100;
-            message.channel.send(Math.round(num * 10) / 10 + "%");
+            if (args[0].charAt(args[0].length - 1) === '%') {
+                const percent = (parseFloat(args[0]) / 100).toFixed(4);
+                message.channel.send(`${args[0]} is ${(33499537 * percent).toFixed(0)}`);
+
+            } else if (typeof Number(args[0]) === 'number') {
+                let num = Number(args[0].replace(/\,/g, '')) / 33499537 * 100;
+                message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
+
+            } else {
+                // If the user didn't send a percentage or number, need to catch the mistake.
+                message.channel.send(`${args[0]} can't be converted.`)
+            }
+
             break;
         }
 
         case 'invite': {
-            message.channel.send("Use the following link (need server admin permissions): https://discordapp.com/oauth2/authorize?client_id=476374210122612747&scope=bot . For support, contact TheNo0b#9329 on Discord");
+            message.channel.send("Use the following link (need server admin permissions): https://discordapp.com/oauth2/authorize?client_id=476374210122612747&scope=bot . For support, contact Tipster22#1021 on Discord");
             break;
         }
 
