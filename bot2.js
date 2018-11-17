@@ -10,6 +10,7 @@ const client = new Discord.Client();
 const config = require("./config.json");
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
+// config.clientID contains the bot config ID (change between testing and live)
 
 
 client.on("ready", () => {
@@ -154,7 +155,7 @@ client.on("message", async message => {
 
         case 'p1': {
             // Check if this is a percentage or a raw number
-            if (args[0].charAt(args[0].length - 1) === '%') {
+            if (args && args[0].charAt(args[0].length - 1) === '%') {
 
                 // convert to a decimal with 4 decimal places
                 const percent = (parseFloat(args[0]) / 100).toFixed(4);
@@ -165,15 +166,17 @@ client.on("message", async message => {
                 let num = Number(args[0].replace(/\,/g, ''))/ 46888776 * 100;
                 message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
 
-            } else {
+            } else if (args && args.length) {
                 // If the user didn't send a percentage or number, need to catch the mistake.
                 message.channel.send(`${args[0]} can't be converted.`)
+            } else {
+                message.channel.send(`You forgot to enter a value!`)
             }
             break;
         }
 
         case 'p2': {
-            if (args[0].charAt(args[0].length - 1) === '%') {
+            if (args && args[0].charAt(args[0].length - 1) === '%') {
 
                 const percent = (parseFloat(args[0]) / 100).toFixed(4);
                 message.channel.send(`${args[0]} is ${(52105585 * percent).toFixed(0)}`);
@@ -181,32 +184,36 @@ client.on("message", async message => {
             } else if (typeof Number(args[0]) === 'number') {
                 let num = Number(args[0].replace(/\,/g, '')) / 52105585 * 100;
                 message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
-            } else {
+            } else if (args && args.length) {
                 // If the user didn't send a percentage or number, need to catch the mistake.
                 message.channel.send(`${args[0]} can't be converted.`)
+            } else {
+                message.channel.send(`You forgot to enter a value!`)
             }
 
             break;
         }
 
         case 'p3': {
-            if (args[0].charAt(args[0].length - 1) === '%') {
+            if (args && args[0].charAt(args[0].length - 1) === '%') {
                 const percent = (parseFloat(args[0]) / 100).toFixed(4);
                 message.channel.send(`${args[0]} is ${(38371455 * percent).toFixed(0)}`);
 
             } else if (typeof Number(args[0]) === 'number') {
                 let num = Number(args[0].replace(/\,/g, '')) / 38371455 * 100;
                 message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
-            } else {
+            } else if (args && args.length) {
                 // If the user didn't send a percentage or number, need to catch the mistake.
                 message.channel.send(`${args[0]} can't be converted.`)
+            } else {
+                message.channel.send(`You forgot to enter a value!`)
             }
 
             break;
         }
 
         case 'p4': {
-            if (args[0].charAt(args[0].length - 1) === '%') {
+            if (args && args[0].charAt(args[0].length - 1) === '%') {
                 const percent = (parseFloat(args[0]) / 100).toFixed(4);
                 message.channel.send(`${args[0]} is ${(33499537 * percent).toFixed(0)}`);
 
@@ -214,16 +221,18 @@ client.on("message", async message => {
                 let num = Number(args[0].replace(/\,/g, '')) / 33499537 * 100;
                 message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
 
-            } else {
+            } else if (args && args.length) {
                 // If the user didn't send a percentage or number, need to catch the mistake.
                 message.channel.send(`${args[0]} can't be converted.`)
+            } else {
+                message.channel.send(`You forgot to enter a value!`)
             }
 
             break;
         }
 
         case 'invite': {
-            message.channel.send("Use the following link (need server admin permissions): https://discordapp.com/oauth2/authorize?client_id=476374210122612747&scope=bot . For support, contact Tipster22#1021 on Discord");
+            message.channel.send(`Use the following link (need server admin permissions): https://discordapp.com/oauth2/authorize?client_id=${config.clientID}&scope=bot . For support, contact Tipster22#1021 on Discord`);
             break;
         }
 
