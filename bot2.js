@@ -20,7 +20,7 @@ client.on("ready", () => {
 
     // Example of changing the bot's playing game to something useful. `client.user` is what the
     // docs refer to as the "ClientUser".
-    client.user.setActivity(`!help for help. Bot serving ${client.users.size} users, in ${client.channels.size} channels`);
+    client.user.setActivity(`${config.prefix}help for help. Bot serving ${client.users.size} users, in ${client.channels.size} channels`);
 });
 
 
@@ -71,23 +71,23 @@ client.on("message", async message => {
             message.channel.send(`
       Welcome, this bot provides content from the HSTR Project. Below are commands to retrieve information. To read the guide and get advice from the community, join here: https://discord.gg/yPchf8r
       Bot is maintained by Tipster22#1021, directly contact or tag in the Discord server for bugs/suggestions 
-      **!teamslist**: Display the full recommended HSTR teams list 
-      **!jtr**: display the P1 JTR battlecard.
-      **!p1jedi**: display the P1 Jedi battlecard 
-      **!p2jedi**: display the P2 Jedi battlecard 
-      **!phoenix**: display the P2 Phoenix battlecard 
-      **!leia**: display the P2 Machine Gun Leia battlecard 
-      **!churchofnute**: display the P2 Church of Nute battlecard 
-      **!chexmix**: display the P3 Chex Mix battlecard 
-      **!yolorolo**: display the P3 YOLO ROLO battlecard 
-      **!nihilusmatrix**: display matrix to understand how Nihilus attacks 
-      **!nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
-      **!p1 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P1 
-      **!p2 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P2 
-      **!p3 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P3 
-      **!p4 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P4 
-      **!invite**: Invite the bot to your Discord server 
-      **!readiness** (coming very soon!): Breaks down how ready your guild is for each HSTR phase, and analyzes which guild members need to strengthen which           squads for phases that you are not ready for.  
+      **${config.prefix}teamslist**: Display the full recommended HSTR teams list 
+      **${config.prefix}jtr**: display the P1 JTR battlecard.
+      **${config.prefix}p1jedi**: display the P1 Jedi battlecard 
+      **${config.prefix}p2jedi**: display the P2 Jedi battlecard 
+      **${config.prefix}phoenix**: display the P2 Phoenix battlecard 
+      **${config.prefix}leia**: display the P2 Machine Gun Leia battlecard 
+      **${config.prefix}churchofnute**: display the P2 Church of Nute battlecard 
+      **${config.prefix}chexmix**: display the P3 Chex Mix battlecard 
+      **${config.prefix}yolorolo**: display the P3 YOLO ROLO battlecard 
+      **${config.prefix}nihilusmatrix**: display matrix to understand how Nihilus attacks 
+      **${config.prefix}nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
+      **${config.prefix}p1 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P1 
+      **${config.prefix}p2 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P2 
+      **${config.prefix}p3 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P3 
+      **${config.prefix}p4 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P4 
+      **${config.prefix}invite**: Invite the bot to your Discord server 
+      **${config.prefix}readiness** (coming very soon!): Breaks down how ready your guild is for each HSTR phase, and analyzes which guild members need to strengthen which           squads for phases that you are not ready for.  
       `);
             break;
         }
@@ -155,13 +155,13 @@ client.on("message", async message => {
 
         case 'p1': {
             // Check if this is a percentage or a raw number
-            if (args && args[0].charAt(args[0].length - 1) === '%') {
+            if (args.length && args[0].charAt(args[0].length - 1) === '%') {
 
                 // convert to a decimal with 4 decimal places
                 const percent = (parseFloat(args[0]) / 100).toFixed(4);
                 message.channel.send(`${args[0]} is ${(46888776 * percent).toFixed(0)}`);
 
-            } else if (typeof Number(args[0]) === 'number') {
+            } else if (typeof Number(args[0]) === 'number' && args[0] > 0) {
 
                 let num = Number(args[0].replace(/\,/g, ''))/ 46888776 * 100;
                 message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
@@ -176,12 +176,12 @@ client.on("message", async message => {
         }
 
         case 'p2': {
-            if (args && args[0].charAt(args[0].length - 1) === '%') {
+            if (args.length && args[0].charAt(args[0].length - 1) === '%') {
 
                 const percent = (parseFloat(args[0]) / 100).toFixed(4);
                 message.channel.send(`${args[0]} is ${(52105585 * percent).toFixed(0)}`);
 
-            } else if (typeof Number(args[0]) === 'number') {
+            } else if (typeof Number(args[0]) === 'number' && args[0] > 0) {
                 let num = Number(args[0].replace(/\,/g, '')) / 52105585 * 100;
                 message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
             } else if (args && args.length) {
@@ -195,11 +195,11 @@ client.on("message", async message => {
         }
 
         case 'p3': {
-            if (args && args[0].charAt(args[0].length - 1) === '%') {
+            if (args.length && args[0].charAt(args[0].length - 1) === '%') {
                 const percent = (parseFloat(args[0]) / 100).toFixed(4);
                 message.channel.send(`${args[0]} is ${(38371455 * percent).toFixed(0)}`);
 
-            } else if (typeof Number(args[0]) === 'number') {
+            } else if (typeof Number(args[0]) === 'number' && args[0] > 0) {
                 let num = Number(args[0].replace(/\,/g, '')) / 38371455 * 100;
                 message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
             } else if (args && args.length) {
@@ -213,11 +213,11 @@ client.on("message", async message => {
         }
 
         case 'p4': {
-            if (args && args[0].charAt(args[0].length - 1) === '%') {
+            if (args.length && args[0].charAt(args[0].length - 1) === '%') {
                 const percent = (parseFloat(args[0]) / 100).toFixed(4);
                 message.channel.send(`${args[0]} is ${(33499537 * percent).toFixed(0)}`);
 
-            } else if (typeof Number(args[0]) === 'number') {
+            } else if (typeof Number(args[0]) === 'number' && args[0] > 0) {
                 let num = Number(args[0].replace(/\,/g, '')) / 33499537 * 100;
                 message.channel.send(`${args[0]} is ${Math.round(num * 10) / 10}%`);
 
