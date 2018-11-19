@@ -1,10 +1,10 @@
 // Load up the discord.js library
-const Discord = require("discord.js");
+const { Client, RichEmbed } = require("discord.js");
 
 // This is your client. Some people call it `bot`, some people call it `self`, 
 // some might call it `cootchie`. Either way, when you see `client.something`, or `bot.something`,
 // this is what we're refering to. Your client.
-const client = new Discord.Client();
+const client = new Client();
 
 // Here we load the config.json file that contains our token and our prefix values. 
 const config = require("./config.json");
@@ -12,6 +12,9 @@ const config = require("./config.json");
 // config.prefix contains the message prefix.
 // config.clientID contains the bot config ID (change between testing and live)
 
+
+// Message Handler
+const aiHandler = require('./src/ai');
 
 client.on("ready", () => {
 
@@ -76,18 +79,22 @@ client.on("message", async message => {
       **${config.prefix}p1jedi**: display the P1 Jedi battlecard 
       **${config.prefix}p2jedi**: display the P2 Jedi battlecard 
       **${config.prefix}phoenix**: display the P2 Phoenix battlecard 
+      **${config.prefix}ewoks**: display the P2 Ewoks battlecard 
       **${config.prefix}leia**: display the P2 Machine Gun Leia battlecard 
       **${config.prefix}churchofnute**: display the P2 Church of Nute battlecard 
       **${config.prefix}chexmix**: display the P3 Chex Mix battlecard 
       **${config.prefix}yolorolo**: display the P3 YOLO ROLO battlecard 
       **${config.prefix}nihilusmatrix**: display matrix to understand how Nihilus attacks 
+      **${config.prefix}p3nightsisters**: Display the 9% Nightsister P3 Strategy 
+      **${config.prefix}p4nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
       **${config.prefix}nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
       **${config.prefix}p1 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P1 
       **${config.prefix}p2 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P2 
       **${config.prefix}p3 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P3 
       **${config.prefix}p4 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P4 
       **${config.prefix}invite**: Invite the bot to your Discord server 
-      **${config.prefix}readiness** (coming very soon!): Breaks down how ready your guild is for each HSTR phase, and analyzes which guild members need to strengthen which           squads for phases that you are not ready for.  
+      **${config.prefix}readiness** (coming very soon!): Breaks down how ready your guild is for each HSTR phase, and analyzes which guild members need to strengthen which squads for phases that you are not ready for.  
+      **${config.prefix}ping: Check if bot is online.
       `);
             break;
         }
@@ -132,6 +139,11 @@ client.on("message", async message => {
             break;
         }
 
+        case 'ewoks': {
+            message.channel.send('https://drive.google.com/open?id=1rvla8G2S_UgcIeXKS6ravpOVVGzM8fHO');
+            break;
+        }
+
         case 'chexmix': {
             message.channel.send('https://drive.google.com/open?id=1Pg1goUW-bRebWd8nzJ9es8nF0Nk4S9KC');
             break;
@@ -142,8 +154,19 @@ client.on("message", async message => {
             break;
         }
 
+        case 'p3nightsisters': {
+            message.channel.send('https://docs.google.com/document/d/1uLDHEihCR71w1N7TByMxlh-WbQi8UArjQZRJJ9Qxpuc/edit');
+            break;
+        }
+
+        case 'p4nightsisters': {
+            message.channel.send('https://drive.google.com/open?id=1p5LlfkMVn8G-c8I6NusdWoMKGNozTXyl');
+            break;
+        }
+
         case 'nightsisters':
         case 'nightsister': {
+            message.channel.send('https://docs.google.com/document/d/1uLDHEihCR71w1N7TByMxlh-WbQi8UArjQZRJJ9Qxpuc/edit');
             message.channel.send('https://drive.google.com/open?id=1p5LlfkMVn8G-c8I6NusdWoMKGNozTXyl');
             break;
         }
@@ -242,10 +265,10 @@ client.on("message", async message => {
         }
 
         default: {
-            message.channel.send("invalid command");
+            aiHandler.analyzeText(message);
+            break;
         }
     }
-
 });
 
 client.login(config.token);

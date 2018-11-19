@@ -5,8 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+* Added AI functionality for greetings, responding to thanks, and basic swgoh information.
+* Added missing functionality from the original bot
+  - Nightsisters command added as well as ewoks card.
+  - Added card for p3/p4 nightsisters
+* Added ping command to list of available commands in help.
+
+
 ### Changed
 * Added the clientID to the config.json file to make using the test server/live server interchangable.
+* Separated code out from bot2.js to ai.js as well as separate services and data.
+
 
 ### Fixed
 * Added a null check on the phase checks.
