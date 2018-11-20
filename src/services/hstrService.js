@@ -1,8 +1,8 @@
 const db = require('../../data/hstr.json');
 
-exports.getHstrTeam = function(req, res) {
+exports.getHstrTeam = function (req, res) {
     const team = req.body.conversation.memory.team;
-    const teamInfos = findTeamInfos(team.value);
+    const teamInfos = this.findTeamInfos(team.value);
 
     if (!teamInfos) {
         res.json({
@@ -20,7 +20,7 @@ exports.getHstrTeam = function(req, res) {
     }
 };
 
-exports.findTeamInfos = function(name) {
+exports.findTeamInfos = function (name) {
     const data = db.filter((team) => {
         return team.names.find(n => n.toLowerCase() === name.toLowerCase());
     });

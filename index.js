@@ -10,10 +10,9 @@ app.use(bodyParser.json());
 app.post('/hstr-teams', hstr.getHstrTeam);
 app.post('/character-abbr', charService.getCharacterByAbbr);
 app.post('/errors', function (req, res) {
-    console.error(req.body);
     res.sendStatus(200);
 });
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
+app.listen(PORT);

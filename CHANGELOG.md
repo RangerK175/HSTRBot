@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   - Nightsisters command added as well as ewoks card.
   - Added card for p3/p4 nightsisters
 * Added ping command to list of available commands in help.
+* Updated readiness command to send a link to the readiness guide.
+* Added circleci configuration to help with deployments.
+* Added linting and unit testing for better code cleanliness and consistency.
 
 
 ### Changed

@@ -11,5 +11,14 @@
     "express": "^4.16.4",
     "recastai": "^4.0.0",
     "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "jest": "^23.6.0"
+  },
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
+    "test": "jest"
   }
 }

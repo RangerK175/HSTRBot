@@ -1,4 +1,4 @@
-const random = array => { return array[Math.floor(Math.random() * array.length)] };
+const random = array => { return array[Math.floor(Math.random() * array.length)]; };
 
 const getGreetings = () => {
     const answers = [
@@ -7,9 +7,9 @@ const getGreetings = () => {
         'Hey, nice to see you',
         'Welcome back',
         'Hola',
-        'Hey, what\'s up',
+        `Hey, what's up`,
     ];
-    return random(answers)
+    return random(answers);
 };
 
 module.exports = getGreetings;
