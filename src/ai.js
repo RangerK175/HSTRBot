@@ -41,10 +41,17 @@ exports.analyzeText = function (message) {
             }
             case 'get-help' : {
                 const entity = res.entities.characterabr || res.entities.team;
-                const abbr = entity[0].raw;
-                const actualName = charService.findAbbr(abbr);
 
-                message.channel.send(`${abbr} is the abbreviation for ${actualName}`);
+                if (entity) {
+                    const abbr = entity[0].raw;
+
+                    const actualName = charService.findAbbr(abbr);
+                    message.channel.send(`${abbr} is the abbreviation for ${actualName}`);
+                } else {
+                    message.channel.send(`Looking for help, ${message.author.username}?`);
+                    message.channel.send(`Feel free to send ${config.prefix}help for quick commands.`);
+                }
+
                 break;
             }
             case 'say-thanks': {
@@ -61,5 +68,7 @@ exports.analyzeText = function (message) {
         })
         .catch((err) => {
             console.log(err);
+            message.channel
+                .send(`You caught me off-guard. I don't understand that at all.`);
         });
 };

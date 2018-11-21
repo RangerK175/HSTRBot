@@ -141,6 +141,7 @@ Bot is maintained by Tipster22#1021, directly contact or tag in the Discord serv
         break;
     }
 
+    case 'p2ewoks':
     case 'ewoks': {
         message.channel.send('https://drive.google.com/open?id=1rvla8G2S_UgcIeXKS6ravpOVVGzM8fHO');
         break;
