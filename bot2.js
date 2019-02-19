@@ -55,7 +55,7 @@ client.on('message', message => {
 
     prefixes = JSON.parse(fs.readFileSync(__dirname + "/data/prefixes.json", "utf8"));
 
-    if (prefixes) {
+    if (prefixes && prefixes[message.guild.id]) {
       prefix = prefixes[message.guild.id].prefix
     }
 
@@ -305,6 +305,6 @@ https://discordapp.com/oauth2/authorize?client_id=${config.clientID}&scope=bot .
     }
   })().catch(console.log);
 
-})
+});
 
 client.login(config.token);
