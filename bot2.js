@@ -55,7 +55,7 @@ client.on('message', message => {
 
     prefixes = JSON.parse(fs.readFileSync(__dirname + "/data/prefixes.json", "utf8"));
 
-    if (prefixes && prefixes[message.guild.id]) {
+    if (message && message.guild && prefixes[message.guild.id]) {
       prefix = prefixes[message.guild.id].prefix
     }
 
