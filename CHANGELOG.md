@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+* Added the ability to set a custom prefix with the !prefix command.
+
+### Changed
+* More changes to the config.json file. Need a better way to separate the test environment from the production environment.
+
+### Fixed
+* The invite was using the DEMO bot key instead of the actual one.
 
 ## [1.1.0] 2/10/2019
 ### Added
