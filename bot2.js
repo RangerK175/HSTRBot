@@ -44,7 +44,7 @@ client.on('message', async (message) => {
   let prefix, prefixes;
 
   if (config) {
-    let prefix = config.prefix;
+    prefix = config.prefix;
   }
   // This event will run on every single message received, from any channel or DM.
   // It's good practice to ignore other bots. This also makes your bot ignore itself
