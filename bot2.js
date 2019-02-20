@@ -98,15 +98,11 @@ Bot is maintained by Tipster22#1021, directly contact or tag in the Discord serv
       **${prefix}p3nightsisters**: Display the 9% Nightsister P3 Strategy 
       **${prefix}p4nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
       **${prefix}nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
-      **${prefix}p1 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P1 
-      **${prefix}p2 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P2 
-      **${prefix}p3 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P3 
-      **${prefix}p4 [number | percentage]**: Convert damage score to percent or vice versa of boss health in P4 
+      **${prefix}p1/p2/p3/p4 [number | percentage]**: Convert damage score to percent or vice versa of boss health in phase 
       **${prefix}invite**: Invite the bot to your Discord server 
       **${prefix}prefix**: Set the channel's prefix for the bot to a different key. This channel is currently using ${prefix}.
       **${prefix}readiness**: Breaks down how ready your guild is for each HSTR phase,
        and analyzes which guild members need to strengthen which squads for phases that you are not ready for.  
-      **${prefix}ping**: Check if bot is online.
       `);
       break;
     }
@@ -273,9 +269,9 @@ https://discordapp.com/oauth2/authorize?client_id=${config.clientID}&scope=bot .
     }
 
     case 'prefix': {
-      if (!message.member.hasPermission("MANAGE_SERVER")) return message.reply("This is not the command you are looking for, young padawan");
+      if (!message.member.hasPermission("MANAGE_SERVER")) message.reply("This is not the command you are looking for, young padawan");
 
-      if (!args[0]) return message.reply(`Usage: ${prefix} <desired prefix here>`);
+      if (!args[0]) message.reply(`Usage: ${prefix} <desired prefix here>`);
 
       let prefixes = JSON.parse(fs.readFileSync(__dirname + "/data/prefixes.json", "utf8"));
 
