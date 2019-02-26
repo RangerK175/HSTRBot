@@ -269,9 +269,9 @@ https://discordapp.com/oauth2/authorize?client_id=${config.clientID}&scope=bot .
     }
 
     case 'prefix': {
-      if (!message.member.hasPermission("MANAGE_SERVER")) message.reply("This is not the command you are looking for, young padawan");
+      if (!message.member.hasPermission("MANAGE_SERVER")) message.channel.send("This is not the command you are looking for, young padawan");
 
-      if (!args[0]) message.reply(`Usage: ${prefix} <desired prefix here>`);
+      if (!args[0]) message.reply(`Usage: ${prefix}prefix <desired prefix here>`);
 
       let prefixes = JSON.parse(fs.readFileSync(__dirname + "/data/prefixes.json", "utf8"));
 
