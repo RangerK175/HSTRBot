@@ -100,7 +100,7 @@ Bot is maintained by Tipster22#1021, directly contact or tag in the Discord serv
       **${prefix}nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
       **${prefix}p1/p2/p3/p4 [number | percentage]**: Convert damage score to percent or vice versa of boss health in phase 
       **${prefix}invite**: Invite the bot to your Discord server 
-      **${prefix}prefix**: Set the channel's prefix for the bot to a different key. This channel is currently using ${prefix}.
+      **${prefix}prefix [new prefix]**: Set the channel's prefix for the bot to a different key. This channel is currently using ${prefix}.
       **${prefix}readiness**: Breaks down how ready your guild is for each HSTR phase,
        and analyzes which guild members need to strengthen which squads for phases that you are not ready for.  
       `);
