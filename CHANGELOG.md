@@ -4,15 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## 1.2.0 3/11/2019
 ### Added
 * Added the ability to set a custom prefix with the !prefix command.
+* Added new battlecards.
 
 ### Changed
 * More changes to the config.json file. Need a better way to separate the test environment from the production environment.
 
 ### Fixed
 * The invite was using the DEMO bot key instead of the actual one.
+* Wrapped message function in async to catch errors.
 
 ## [1.1.0] 2/10/2019
 ### Added
