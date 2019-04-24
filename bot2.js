@@ -89,7 +89,7 @@ client.on('message', (message) => {
             .setColor(0xff0000)
             .addField(`Utilities`, `
               **invite**: Invite the bot to your Discord server!
-              **prefix [new prefix]**: Set the channel's prefix for the bot to a different key.
+              **prefix [new prefix]**: Set the channel's prefix for the bot to a different key. (Requires: Manage Channels)
               **readiness**: Breaks down how ready your guild is for each HSTR phase,
                and analyzes which guild members need to strengthen which squads for phases that you are not ready for. 
             `)
@@ -319,7 +319,7 @@ https://discordapp.com/oauth2/authorize?client_id=${config.clientID}&scope=bot .
       }
 
       case 'prefix': {
-        if (!message.member.hasPermission("MANAGE_SERVER")) message.channel.send("This is not the command you are looking for, young padawan");
+        if (!message.member.hasPermission("MANAGE_CHANNELS")) message.channel.send("This is not the command you are looking for, young padawan");
 
         if (!args[0]) message.reply(`Usage: ${prefix}prefix <desired prefix here>`);
 
