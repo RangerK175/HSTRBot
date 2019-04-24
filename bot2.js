@@ -80,7 +80,7 @@ client.on('message', (message) => {
 
       case 'help':
       case 'h': {
-        let helpEmbed = new Discord.RichEmbed()
+        const helpEmbed = new Discord.RichEmbed()
             .setColor("#FF9900")
             .setTitle("HSTR BOT")
             .setAuthor("Maintained by Tipster22#1021")
@@ -122,8 +122,11 @@ client.on('message', (message) => {
             .addField(`Phase 4`, `
               **p4 [number | percentage]**: Convert damage score to percent or vice versa of the trio
               **p4nightsisters**: display the P4 Nightsisters battlecard
-
             `)
+            .addField(`Events`, `
+              **event-c3po**: Display the C3PO event battlecard
+              **event-darthomir**: Display the Darthomir Bonus tier battlecard
+              **tb-rogue1**: Display the Rogue One P6 territory battle battlecard.`);
         message.channel.send(helpEmbed);
         break;
       }
