@@ -80,35 +80,51 @@ client.on('message', (message) => {
 
       case 'help':
       case 'h': {
-        message.channel.send(
-            `Welcome! This bot provides content from the HSTR Project. Below are commands to retrieve information. To read the guide and get advice from the community, join here: https://discord.gg/yPchf8r.
+        let helpEmbed = new Discord.RichEmbed()
+            .setColor("#FF9900")
+            .setTitle("HSTR BOT")
+            .setAuthor("Maintained by Tipster22#1021")
+            .setDescription(`Welcome! This bot provides content from the HSTR Project. Below are commands to retrieve information. To read the guide and get advice from the community, join here: https://discord.gg/yPchf8r.`)
+            .addField(`Command`, `This server is currently using ${prefix} use this to evoke all of the following commands.`)
+            .setColor(0xff0000)
+            .addField(`Utilities`, `
+              **invite**: Invite the bot to your Discord server!
+              **prefix [new prefix]**: Set the channel's prefix for the bot to a different key.
+              **readiness**: Breaks down how ready your guild is for each HSTR phase,
+               and analyzes which guild members need to strengthen which squads for phases that you are not ready for. 
+            `)
+            .addField(`Teams`, `
+              **teamlist**: Display the full teams list
+              **nightsisters**: Display the nightsister team that can be used in P2, 3, and 4
+            `)
+            .addField(`Phase 1`, `
+              **p1 [number | percentage]**: Convert damage score to percent or vice versa of Nihilus
+              **nihilusmatrix**: display matrix to understand Nihilus attack patterns
+              **jtr**: display the P1 JTR battlecard
+              **p1jedi**: display the P1 Jedi battlecard
+            `)
+            .addField(`Phase 2`, `
+              **p2 [number | percentage]**: Convert damage score to percent or vice versa of Sion
+              **p2jedi**: display the P2 Jedi battlecard
+              **p2fo**: display the P2 First Order battlecard
+              **phoenix**: display the P2 Phoenix battlecard
+              **ewoks**: display the P2 Ewoks battlecard
+              **leia**: display the P2 Machine Gun Leia battlecard
+              **churchofnute**: display the P2 Church of Nute battlecard
+            `)
+            .addField(`Phase 3`, `
+              **p3 [number | percentage]**: Convert damage score to percent or vice versa of Traya
+              **chexmix**: display the P3 Chex Mix battlecard
+              **yolorolo**: display the P3 Yolo Rolo battlecard
+              **p3nightsisters**: Display the 9% Nightsister P3 Strategy 
 
-      **${prefix}teamslist**: Display the full recommended HSTR teams list 
-      **${prefix}jtr**: display the P1 JTR battlecard
-      **${prefix}p1jedi**: display the P1 Jedi battlecard 
-      **${prefix}p2jedi**: display the P2 Jedi battlecard
-      **${prefix}p2fo**: display the P2 First Order battlecard
-      **${prefix}phoenix**: display the P2 Phoenix battlecard 
-      **${prefix}ewoks**: display the P2 Ewoks battlecard 
-      **${prefix}leia**: display the P2 Machine Gun Leia battlecard 
-      **${prefix}churchofnute**: display the P2 Church of Nute battlecard 
-      **${prefix}chexmix**: display the P3 Chex Mix battlecard 
-      **${prefix}yolorolo**: display the P3 YOLO ROLO battlecard 
-      **${prefix}nihilusmatrix**: display matrix to understand how Nihilus attacks 
-      **${prefix}p3nightsisters**: Display the 9% Nightsister P3 Strategy 
-      **${prefix}p4nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
-      **${prefix}nightsisters**: display the P4 Nightsisters battlecard (strategy applicable to P2 and P3 too) 
-      **${prefix}p1/p2/p3/p4 [number | percentage]**: Convert damage score to percent or vice versa of boss health in phase 
-      **${prefix}event-c3po**: Display the C3PO event battlecard.
-      **${prefix}event-darthomir**: Display the Darthomir Bonus tier battlecard.
-      **${prefix}tb-rogue1**: Display the Rogue One P6 territory battle battlecard.
-      **${prefix}invite**: Invite the bot to your Discord server 
-      **${prefix}prefix [new prefix]**: Set the channel's prefix for the bot to a different key. This channel is currently using ${prefix}.
-      **${prefix}readiness**: Breaks down how ready your guild is for each HSTR phase,
-       and analyzes which guild members need to strengthen which squads for phases that you are not ready for.  
-       
-        Bot is maintained by Tipster22#1021
-      `);
+            `)
+            .addField(`Phase 4`, `
+              **p4 [number | percentage]**: Convert damage score to percent or vice versa of the trio
+              **p4nightsisters**: display the P4 Nightsisters battlecard
+
+            `)
+        message.channel.send(helpEmbed);
         break;
       }
 
