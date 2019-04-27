@@ -89,6 +89,7 @@ client.on('message', (message) => {
             .setColor(0xff0000)
             .addField(`Utilities`, `
               **invite**: Invite the bot to your Discord server!
+              **airplane-mode**: How to properly utilize airplane mode during fights.
               **prefix [new prefix]**: Set the channel's prefix for the bot to a different key. (Requires: Manage Channels)
               **readiness**: Breaks down how ready your guild is for each HSTR phase,
                and analyzes which guild members need to strengthen which squads for phases that you are not ready for. 
@@ -125,14 +126,21 @@ client.on('message', (message) => {
             `)
             .addField(`Events`, `
               **event-c3po**: Display the C3PO event battlecard
+              **event-chewie**: Display the Chewbacca event battlecard
               **event-darthomir**: Display the Darthomir Bonus tier battlecard
-              **tb-rogue1**: Display the Rogue One P6 territory battle battlecard.`);
+              **tb-rogue1**: Display the Rogue One P6 territory battle battlecard`);
         message.channel.send(helpEmbed);
         break;
       }
 
       case 'event-c3po': {
         message.channel.send('https://drive.google.com/file/d/1ciHrJdP6HsrKN-kubizdgG9U6esBI1yJ/view');
+        break;
+      }
+
+      case 'event-chewie':
+      case 'event-chewbacca': {
+        message.channel.send('https://drive.google.com/file/d/1bWFqodiHy3TgRQfVbRPyT8OW48G2sGkH/view');
         break;
       }
 

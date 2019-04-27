@@ -18,56 +18,58 @@ const greetings = require('../intents/greetings');
 const thanks = require('../intents/thanks');
 
 
-exports.analyzeText = function (message, prefix) {
+exports.analyzeText = function (message) {
     request.analyseText(message.content)
         .then((res) => {
-            console.log(`Intent: ${res.intent().slug}`);
+            if (!res.intent()) {
+                message.channel
+                    .send(`I'm not sure I understand. Try a different phrase or ask me for help with ${config.prefix}help.`);
+            } else {
+                const intent = res.intent();
 
-            const intent = res.intent();
+                switch (intent.slug) {
+                case 'greetings' : {
+                    const greeting = greetings();
+                    message.channel.send(`${greeting}, ${message.author.username}`);
+                    break;
+                }
+                case 'hstr-informations' : {
+                    const team = res.entities.team[0].value;
+                    const teamInfo = hstrService.findTeamInfos(team);
 
-            switch (intent.slug) {
-            case 'greetings' : {
-                const greeting = greetings();
-                message.channel.send(`${greeting}, ${message.author.username}`);
-                break;
-            }
-            case 'hstr-informations' : {
-                const team = res.entities.team[0].value;
-                const teamInfo = hstrService.findTeamInfos(team);
+                    message.channel.send(`${team} is primarily used in phase ${teamInfo.primaryPhase}`);
+                    message.channel.send(`${team} typically consists of ${teamInfo.members}`);
+                    break;
+                }
+                case 'get-help' : {
+                    const entity = res.entities.characterabr || res.entities.team;
 
-                message.channel.send(`${team} is primarily used in phase ${teamInfo.primaryPhase}`);
-                message.channel.send(`${team} typically consists of ${teamInfo.members}`);
-                break;
-            }
-            case 'get-help' : {
-                const entity = res.entities.characterabr || res.entities.team;
+                    if (entity) {
+                        const abbr = entity[0].raw;
 
-                if (entity) {
-                    const abbr = entity[0].raw;
+                        const actualName = charService.findAbbr(abbr);
+                        message.channel.send(`${abbr} is the abbreviation for ${actualName}`);
+                    } else {
+                        message.channel.send(`Looking for help, ${message.author.username}?`);
+                        message.channel.send(`Feel free to send ${config.prefix}help for quick commands.`);
+                    }
 
-                    const actualName = charService.findAbbr(abbr);
-                    message.channel.send(`${abbr} is the abbreviation for ${actualName}`);
-                } else {
-                    message.channel.send(`Looking for help, ${message.author.username}?`);
-                    message.channel.send(`Feel free to send ${prefix}help for quick commands.`);
+                    break;
+                }
+                case 'say-thanks': {
+                    const thank = thanks();
+                    message.channel.send(thank);
+                    break;
                 }
 
-                break;
-            }
-            case 'say-thanks': {
-                const thank = thanks();
-                message.channel.send(thank);
-                break;
-            }
-
-            default: {
-                message.channel
-                    .send(`I'm not sure I understand. Try a different phrase or refer ask me for help with ${prefix}help.`);
-            }
+                default: {
+                    message.channel
+                        .send(`I'm not sure I understand. Try a different phrase or ask me for help with ${config.prefix}help.`);
+                }
+                }
             }
         })
-        .catch((err) => {
-            console.log(err);
+        .catch(() => {
             message.channel
                 .send(`You caught me off-guard. I don't understand that at all.`);
         });

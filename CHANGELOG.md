@@ -4,7 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 1.2.0 3/11/2019
+
+## [1.3.0] 4/26/2019
+### Added
+* Added new battlecards (chewbacca and airplane mode)
+
+### Changed
+* Updated the help message to be on a card instead of a bunch of text.
+
+### Fixed
+* Removed a console log that was looking for a slug off an intent that was returning an error.
+
+## [1.2.0] 3/11/2019
 ### Added
 * Added the ability to set a custom prefix with the !prefix command.
 * Added new battlecards.
