@@ -18,12 +18,12 @@ const greetings = require('../intents/greetings');
 const thanks = require('../intents/thanks');
 
 
-exports.analyzeText = function (message) {
+exports.analyzeText = function (message, prefix) {
     request.analyseText(message.content)
         .then((res) => {
             if (!res.intent()) {
                 message.channel
-                    .send(`I'm not sure I understand. Try a different phrase or ask me for help with ${config.prefix}help.`);
+                    .send(`I'm not sure I understand. Try a different phrase or ask me for help with ${prefix}help.`);
             } else {
                 const intent = res.intent();
 
@@ -51,7 +51,7 @@ exports.analyzeText = function (message) {
                         message.channel.send(`${abbr} is the abbreviation for ${actualName}`);
                     } else {
                         message.channel.send(`Looking for help, ${message.author.username}?`);
-                        message.channel.send(`Feel free to send ${config.prefix}help for quick commands.`);
+                        message.channel.send(`Feel free to send ${prefix}help for quick commands.`);
                     }
 
                     break;
@@ -64,7 +64,7 @@ exports.analyzeText = function (message) {
 
                 default: {
                     message.channel
-                        .send(`I'm not sure I understand. Try a different phrase or ask me for help with ${config.prefix}help.`);
+                        .send(`I'm not sure I understand. Try a different phrase or ask me for help with ${prefix}help.`);
                 }
                 }
             }
