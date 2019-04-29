@@ -11,6 +11,12 @@ const config = require('./config.json');
 // config.clientID contains the bot config ID (change between testing and live)
 
 
+const swgohApi = require('api-swgoh-help');
+const swapi = new swgohApi({
+  username: 'Tipster22',
+  password: 'hstrbot123',
+});
+
 // Message Handler
 const aiHandler = require('./src/ai');
 
@@ -90,18 +96,21 @@ client.on('message', (message) => {
             .addField(`Utilities`, `
               **invite**: Invite the bot to your Discord server!
               **airplane-mode**: How to properly utilize airplane mode during fights.
+              **stats**: Display the stats for each boss in each phase in HSTR.
               **prefix [new prefix]**: Set the channel's prefix for the bot to a different key. (Requires: Manage Channels)
               **readiness**: Breaks down how ready your guild is for each HSTR phase,
                and analyzes which guild members need to strengthen which squads for phases that you are not ready for. 
             `)
             .addField(`Teams`, `
               **teamlist**: Display the full teams list
+              **revan**: Display the JKR team that can be used in P1 and P2
               **nightsisters**: Display the nightsister team that can be used in P2, 3, and 4
             `)
             .addField(`Phase 1`, `
               **p1 [number | percentage]**: Convert damage score to percent or vice versa of Nihilus
               **nihilusmatrix**: display matrix to understand Nihilus attack patterns
               **jtr**: display the P1 JTR battlecard
+              **c3po**: display the P1 JTR w/ C3P0 battlecard
               **p1jedi**: display the P1 Jedi battlecard
             `)
             .addField(`Phase 2`, `
@@ -168,6 +177,17 @@ client.on('message', (message) => {
 
       case 'jtr': {
         message.channel.send('https://drive.google.com/file/d/1_JBnmHFMHqzLWdx1i7NLc0lHQop267d1/view');
+        break;
+      }
+
+      case 'c3po': {
+        message.channel.send('https://drive.google.com/file/d/1zj6tvjjOEzD-yjAJz0ySJfoeSd_Q1Ddm/view');
+        break;
+      }
+
+      case 'jkr':
+      case 'revan': {
+        message.channel.send('https://drive.google.com/file/d/1P1T7YhCpt6-XkLF1QLqivUMMZbHRS734/view');
         break;
       }
 
@@ -242,6 +262,11 @@ client.on('message', (message) => {
 
       case 'nihilusmatrix': {
         message.channel.send('https://drive.google.com/open?id=1k9pxWm2MwwuiJhxCDRdK-TGMyMg92mgd');
+        break;
+      }
+
+      case 'stats': {
+        message.channel.send('https://drive.google.com/file/d/1NqYn81Ov_Hsw-v_0J1rD5hNWouduqo7_/view');
         break;
       }
 
@@ -360,3 +385,5 @@ https://discordapp.com/oauth2/authorize?client_id=${config.clientID}&scope=bot .
 });
 
 client.login(config.token);
+swapi.connect();
+

@@ -13,6 +13,7 @@
     "winston": "^3.0.0"
   },
   "devDependencies": {
+    "api-swgoh-help": "^3.3.0",
     "eslint": "^5.9.0",
     "eslint-config-strongloop": "^2.1.0",
     "jest": "^23.6.0"

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] 4/2682019
+### Added
+* Added new battlecards (Revan, Stats, and c3po)
+* Added swgoh-help api for events integration *coming soon*
+
+### Changed
+* Fixed some indent rules in eslint.
 
 ## [1.3.0] 4/26/2019
 ### Added
