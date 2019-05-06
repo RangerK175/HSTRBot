@@ -118,7 +118,8 @@ exports.analyzeText = function (message, prefix) {
         }
       }
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       message.channel
         .send(`You caught me off-guard. I don't understand that at all.`);
     });
