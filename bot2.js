@@ -96,11 +96,12 @@ client.on('message', (message) => {
             .setColor(0xff0000)
             .addField(`Utilities`, `
               **invite**: Invite the bot to your Discord server!
-              **airplane-mode**: How to properly utilize airplane mode during fights.
-              **stats**: Display the stats for each boss in each phase in HSTR.
+              **airplane-mode**: How to properly utilize airplane mode during fights
+              **stats**: Display the stats for each boss in each phase in HSTR
+              **swgoh**: Instructions on setting up swgoh.gg account
               **prefix [new prefix]**: Set the channel's prefix for the bot to a different key. (Requires: Manage Channels)
               **readiness**: Breaks down how ready your guild is for each HSTR phase,
-               and analyzes which guild members need to strengthen which squads for phases that you are not ready for. 
+               and analyzes which guild members need to strengthen which squads for phases that you are not ready for
             `)
             .addField(`Teams`, `
               **teamlist**: Display the full teams list
@@ -128,6 +129,7 @@ client.on('message', (message) => {
               **chexmix**: display the P3 Chex Mix battlecard
               **yolorolo**: display the P3 Yolo Rolo battlecard
               **p3nightsisters**: Display the 9% Nightsister P3 Strategy 
+              **sithempire**: Display the Darth Revan led Sith Empire battlecard
 
             `)
             .addField(`Phase 4`, `
@@ -244,8 +246,18 @@ client.on('message', (message) => {
         break;
       }
 
+      case 'sithempire': {
+        message.channel.send('https://drive.google.com/file/d/1xPm400zGsCHmLQ8APYMmn31dU7hmclxs/view?usp=sharing');
+        break;
+      }
+
+      case 'swgoh': {
+        message.channel.send('https://drive.google.com/file/d/1MHp9pRjLjL_-g4yG-uNUpq_OhXY1FfKz/view?usp=sharing');
+        break;
+      }
+
       case 'p3nightsisters': {
-        message.channel.send('https://docs.google.com/document/d/1uLDHEihCR71w1N7TByMxlh-WbQi8UArjQZRJJ9Qxpuc/edit');
+        message.channel.send('https://docs.google.com/document/d/1uLDHEihCR71w1N7TByMxlh-WbQi8UArjQZRJJ9Qxpuc/edit?usp=sharing');
         break;
       }
 
@@ -256,7 +268,7 @@ client.on('message', (message) => {
 
       case 'nightsisters':
       case 'nightsister': {
-        message.channel.send('https://docs.google.com/document/d/1uLDHEihCR71w1N7TByMxlh-WbQi8UArjQZRJJ9Qxpuc/edit');
+        message.channel.send('https://docs.google.com/document/d/1uLDHEihCR71w1N7TByMxlh-WbQi8UArjQZRJJ9Qxpuc/edit?usp=sharing');
         message.channel.send('https://drive.google.com/open?id=1p5LlfkMVn8G-c8I6NusdWoMKGNozTXyl');
         break;
       }
@@ -388,6 +400,10 @@ https://discordapp.com/oauth2/authorize?client_id=${config.clientID}&scope=bot .
     console.log(err);
   });
 
+});
+
+client.on('error', (err) => {
+  console.log(err.message);
 });
 
 client.login(config.token);
