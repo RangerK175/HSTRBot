@@ -27,8 +27,9 @@ client.on('ready', () => {
 // Example of changing the bot's playing game to something useful. `client.user` is what the
 // docs refer to as the "ClientUser".
     client.user.setActivity(`${config.prefix}help for help. Bot serving ${client.users.size} users, in ${client.channels.size} channels`);
-  })()
-      .catch(console.log);
+  })().catch(err => {
+    console.log(err);
+  });
 });
 
 // Guild and Server are synonymous
@@ -352,7 +353,10 @@ https://discordapp.com/oauth2/authorize?client_id=${config.clientID}&scope=bot .
       }
 
       case 'prefix': {
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) message.channel.send("This is not the command you are looking for, young padawan");
+        if (!message.member.hasPermission("MANAGE_CHANNELS")) {
+          message.channel.send("This is not the command you are looking for, young padawan");
+          return;
+        }
 
         if (!args[0]) message.reply(`Usage: ${prefix}prefix <desired prefix here>`);
 
@@ -380,7 +384,9 @@ https://discordapp.com/oauth2/authorize?client_id=${config.clientID}&scope=bot .
         break;
       }
     }
-  })().catch(console.log);
+  })().catch(err => {
+    console.log(err);
+  });
 
 });
 

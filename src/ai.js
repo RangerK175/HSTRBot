@@ -40,25 +40,29 @@ exports.analyzeText = function (message, prefix) {
           break;
         }
         case 'hstr-informations' : {
-          const team = res.entities.team[0].value;
-          const teamInfo = hstrService.findTeamInfos(team);
+          if (res.entities && res.entities.team) {
+            const team = res.entities.team[0].value;
+            const teamInfo = hstrService.findTeamInfos(team);
 
-          message.channel.send(`${team} is primarily used in phase ${teamInfo.primaryPhase}`);
-          message.channel.send(`${team} typically consists of ${teamInfo.members}`);
+            message.channel.send(`${team} is primarily used in phase ${teamInfo.primaryPhase}`);
+            message.channel.send(`${team} typically consists of ${teamInfo.members}`);
+          }
           break;
         }
         case 'event-information': {
-          const event = res.entities.event[0].value.toLowerCase();
+          if (res.entities && res.entities.event) {
+            const event = res.entities.event[0].value.toLowerCase();
 
-          swapi.fetchEvents().then((result, error, warning) => {
-            if (error) {
-              console.log(error);
-            }
+            swapi.fetchEvents().then((result, error, warning) => {
+              if (error) {
+                console.log(error);
+                return;
+              }
 
-            if (result) {
-              const eventList = result.result.events;
+              if (result) {
+                const eventList = result.result.events;
 
-              switch (event) {
+                switch (event) {
                 case 'jkr':
                 case 'jkr event': {
                   const revanEvent = eventList.find((event) => {
@@ -73,7 +77,6 @@ exports.analyzeText = function (message, prefix) {
                   break;
                 }
                 case 'credit heist' : {
-
                   const creditHeist = eventList.find((event) => {
                     return event.id === 'challenge_CREDIT';
                   });
@@ -84,9 +87,10 @@ exports.analyzeText = function (message, prefix) {
                   message.channel.send(`The next credit heist is on ${futureDate}`);
                   break;
                 }
+                }
               }
-            }
-          });
+            });
+          }
 
           break;
         }
